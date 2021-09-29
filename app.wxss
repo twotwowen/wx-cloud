@@ -1,1 +1,9 @@
 /**app.wxss**/
+
+
+/* 引入字体图标 */
+
+@import "/static/fonts/iconfont.wxss";
+page {
+    height: 100%;
+}

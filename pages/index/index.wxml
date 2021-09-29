@@ -1,4 +1,36 @@
 <!--index.wxml-->
 <view>
+    <!-- 轮播图 -->
+    <swiper class="banners" indicator-dots indicator-color="ivory" indicator-active-color='#d43c33' autoplay circular>
+        <swiper-item class="banners-item" wx:for="{{swipers}}" wx:key="encodeId">
+            <image src="{{item.imageUrl}}" />
+        </swiper-item>
+    </swiper>
 
+    <!-- 字体图标导航 -->
+		<view class="navContainer">
+			<view class="navItem" wx:for="{{navIcon}}" wx:key="index">
+				<text class="{{item.icon}}"></text>
+				<text>{{item.text}}</text>
+			</view>
+		</view>
+		
+		<!-- 推荐歌曲 -->
+		<view class="recommendContainer">
+			<!-- 推荐标题 -->
+			<view class="header">
+				<text class="title">推荐歌曲</text>
+				<view>
+					<text>为你精心推荐</text>
+					<text class="more">查看更多</text>
+				</view>
+			</view>
+			<!-- 可滚动内容区域 -->
+			<scroll-view scroll-x enable-flex class="recommendScroll">
+				<view class="scrollItem" wx:for="{{recommended}}" wx:key="id">
+					<image src="{{item.picUrl}}"></image>
+					<text>{{item.name}}</text>
+				</view>
+			</scroll-view>
+		</view>
 </view>
