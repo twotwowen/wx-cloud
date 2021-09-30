@@ -4,7 +4,6 @@ const app = getApp()
 Page({
     data: {
         swipers: [],
-				recommended:[],
 				navIcon:[
 					{
 						icon:"iconfont icon-tuijian",
@@ -32,13 +31,17 @@ Page({
 						text:'直播'
 					}
 					
-				]
+				],
+				recommended:[],
+				ranklist:[]
 				
     },
 
     onLoad() {
         this.getSwiper()
 				this.getRecommend()
+				this.getRankList()
+				
     },
     //请求轮播图
     async getSwiper() {
@@ -61,6 +64,17 @@ Page({
 				recommended: res.data.result
 			})
 			// console.log(res)
+		},
+		
+		//请求排行榜数据
+		async getRankList() {
+			const res = await wx.$myRequest({
+				url:'/toplist/detail'
+			})
+			this.setData({
+				ranklist:res.data.list.slice(0,4) //截取数组0~6
+			})
+			
 		}
 		
 

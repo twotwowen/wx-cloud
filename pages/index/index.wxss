@@ -14,6 +14,7 @@
 /* 字体图标导航 */
 .navContainer {
 	display: flex;
+	padding-bottom: 20rpx;
 }
 .navItem {
 	display: flex;
@@ -41,21 +42,12 @@
 .recommendContainer {
 	padding: 20rpx;
 }
-.recommendContainer .header .title {
-	font-size: 32rpx;
-	line-height: 80rpx;
-	color: #666;
-}
-.recommendContainer .header .more {
-	float: right;
-	border: 1rpx solid #333;
-	padding: 10rpx 20rpx;
-	font-size: 24rpx;
-	border-radius: 30rpx;
-}
+
 /* 推荐内容区域 */
 .recommendScroll {
 	display: flex;
+	/* padding-top: 10rpx; */
+	height: 300rpx;
 }
 .scrollItem {
 	width: 200rpx;
@@ -74,4 +66,60 @@
 	display: -webkit-box;
 	-webkit-box-orient:vertical;/*设置其对齐模式*/
 	-webkit-line-clamp:2 /*设置多行的行数*/
+}
+
+/* 排行榜 */
+.topList {
+	padding:0 20rpx;
+}
+.topListSwiper {
+	height: 438rpx;
+	padding-bottom: 20rpx;
+}
+.swiperItem {
+	width: 96%;
+	background-color: rgba(0,0,0,.03);
+	border-radius: 50rpx;
+}
+.swiperItem .title {
+	padding-left: 35rpx;
+	padding-top: 11rpx;
+}
+.swiperItem .musicItem {
+	display: flex;
+	padding: 60rpx 40rpx;
+	align-items: flex-start;
+}
+.musicItem image {
+	width: 200rpx;
+	height: 200rpx;
+	border-radius: 28rpx;
+	
+}
+.musicItem .right {
+	display: flex;
+	padding-left: 37rpx;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.rank {
+	padding-bottom: 10rpx;
+	border-bottom: 1rpx solid #ccc;
+}
+.rank .count {
+	font-weight: 600;
+	
+}
+.rank .musicName {
+	padding-left: 38rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.rank .musicAuthor {
+	margin-top: 10rpx;
+	margin-left: 45rpx;
+	text-overflow: ellipsis;
+	width: 268rpx;
+	white-space: nowrap;
+	overflow: hidden;
 }
