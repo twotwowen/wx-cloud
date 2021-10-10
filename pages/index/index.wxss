@@ -73,7 +73,7 @@
 	padding:0 20rpx;
 }
 .topListSwiper {
-	height: 438rpx;
+	height: 600rpx;
 	padding-bottom: 20rpx;
 }
 .swiperItem {
@@ -88,7 +88,7 @@
 .swiperItem .musicItem {
 	display: flex;
 	padding: 60rpx 40rpx;
-	align-items: flex-start;
+	align-items: center;
 }
 .musicItem image {
 	width: 200rpx;
@@ -112,8 +112,14 @@
 }
 .rank .musicName {
 	padding-left: 38rpx;
+	width: 238rpx;
+/* 	overflow: hidden;
+	text-overflow: ellipsis; */
 	overflow: hidden;
 	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
 }
 .rank .musicAuthor {
 	margin-top: 10rpx;
