@@ -137,6 +137,19 @@
 	background: #fff;
 	margin-top: 20rpx;
 }
+/* 最近播放 */
+.personalContent .recentScroll {
+	display: flex;
+	height: 200rpx;
+}
+.personalContent .recentScroll .recentItem {
+	margin: 0 10rpx;
+}
+.recentItem image {
+	width: 200rpx;
+	height: 200rpx;
+	border-radius: 10rpx;
+}
 .recentPlayContainer .title {
 	padding-left: 20rpx;
 	font-size: 26rpx;
