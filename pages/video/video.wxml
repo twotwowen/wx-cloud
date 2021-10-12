@@ -7,8 +7,8 @@
 	</view>
 	
 	<!-- 滑动导航区域 -->
-	<scroll-view scroll-x enable-flex class="navScroll">
-		<view class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
+	<scroll-view scroll-x enable-flex class="navScroll" scroll-into-view="{{'scroll'+ navId}}" scroll-with-animation>
+		<view id="{{'scroll'+item.id}}" class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
 			<view class="navContent {{navId === item.id ? 'active' : ''}} " id="{{item.id}}" bindtap="changeNav">
 				{{item.name}}
 			</view>
@@ -18,8 +18,30 @@
 	
 	<!-- 视频区 -->
 	<scroll-view scroll-y class="videoScroll">
-		<view class="videoItem" wx:for="{{videoUrl}}" wx:key="*this">
-			<video src="{{item}}" object-fit="fill"></video>
+		<view class="videoItem" wx:for="{{videoList}}" wx:key="*this">
+			<video src="{{videoUrl[index]}}" object-fit="fill"></video>
+			
+			<!-- 底部标题 -->
+			<view class="content">{{item.data.title}}</view>
+			<!-- 底部 -->
+			<view class="footer">
+				<image class="avatar" src="{{item.data.creator.avatarUrl}}"></image>
+				<text class="nickName">{{item.data.creator.nickname}}</text>
+				<view class="comments_praised">
+					<text class="item">
+					  <text class="iconfont icon-xihuan"></text>
+					  <text class="count">{{item.data.praisedCount}}</text>
+					</text>
+					<text class="item">
+					  <text class="iconfont icon-pinglun"></text>
+					  <text class="count">{{item.data.commentCount}}</text>
+					</text>
+					<button open-type="share" class="item btn">
+					  <text class="iconfont icon-xuanxiang"></text>
+					</button>
+				</view>
+			</view>
+			
 		</view>
 	</scroll-view>
 </view>

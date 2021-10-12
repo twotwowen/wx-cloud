@@ -8,7 +8,8 @@ Page({
 			videoGroupList:[],
 			navId:0,
 			videoList:'',
-			videoUrl:[]
+			videoUrl:[],
+			videoInfo:[]
     },
 		
 		//获取导航数据
@@ -30,8 +31,14 @@ Page({
 		changeNav(event) {
 			let navId = event.target.id//通过id向event传参的时候，，如果传的是number会自动转化为string
 			this.setData({
-				navId:navId*1
+				navId:navId*1,
+				// videoList:[]
 			})
+			//显示正在加载
+			wx.showLoading({
+				title:'正在加载'
+			})
+			this.getVideoList(this.data.navId)
 		},
 		//获取视频列表数据
 		async getVideoList(navId) {
@@ -45,11 +52,15 @@ Page({
 			
 			//调用获取视频播放地址函数
 			this.getVideoUrl()
+			
+			//关闭加载提示
+			wx.hideLoading()
 		},
 		//获取视频地址的url
 		
 		async getVideoUrl() {
 			let arr = []
+			let arr1 = []
 			for (let i = 0; i < this.data.videoList.length; i++) {
 				// this.data.videoList[i]
 				let videoUrl = await wx.$myRequest({
@@ -59,11 +70,19 @@ Page({
 				arr.push(videoUrl.data.urls[0].url)
 				//向videoList中添加url属性
 				// this.data.videoList[i].url = videoUrl.data.urls[0].url
+				//url,海报,描述汇总
+				
+				arr1.push({
+					url:videoUrl.data.urls[0].url,
+					title:this.data.videoList[i].data.title,
+					poster:this.data.videoList[i].data.coverUrl
+				})
+				
 			}
 			this.setData({
-				videoUrl:arr
+				videoUrl:arr,
+				videoInfo:arr1
 			})
-			
 		},
     /**
      * 生命周期函数--监听页面加载
@@ -72,6 +91,10 @@ Page({
 			
 			//获取导航视频标签列表
 			this.getVideoGroupListData()
+			//显示正在加载
+			wx.showLoading({
+				title:'正在加载'
+			})
     },
 
     /**
