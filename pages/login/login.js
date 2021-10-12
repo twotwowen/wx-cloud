@@ -6,8 +6,9 @@ Page({
      */
     data: {
 			phone: "",
-			password: ""
-			// value:"kk"
+			password: "",
+			// value:"kk",
+			cookies:''
     },
 		
 		handleInput(event) {
@@ -48,12 +49,22 @@ Page({
 			//后端验证
 			//变量名不能写result
 			let results = await wx.$myRequest({
-				url:`/login/cellphone?phone=${phone}&password=${password}`
+				url:`/login/cellphone?phone=${phone}&password=${password}`,
+				data:{
+					isLogin:true
+				}
 			})
-			console.log(results.data)
+			
+			
 			if(results.data.code === 200) {
 				wx.showToast({
 					title: '登录成功'
+				})
+				
+				//将用户的cookies存入本地
+				wx.setStorage({
+					key: 'cookies',
+					data:results.cookies
 				})
 				//将用户的信息存储至本地
 				wx.setStorageSync('userInfo',JSON.stringify(results.data.profile))

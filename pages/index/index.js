@@ -47,6 +47,7 @@ Page({
     async getSwiper() {
         const res = await wx.$myRequest({
             url: '/banner'
+						
         })
         this.setData({
             swipers: res.data.banners
