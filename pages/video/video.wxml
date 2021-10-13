@@ -3,7 +3,7 @@
 	<!-- 头部区域 -->
 	<view class="header">
 		<image src="../../static/image/logo.png"></image>
-		<view class="search">搜索</view>
+		<view class="search">twotwowen</view>
 	</view>
 	
 	<!-- 滑动导航区域 -->
@@ -19,8 +19,10 @@
 	<!-- 视频区 -->
 	<scroll-view scroll-y class="videoScroll">
 		<view class="videoItem" wx:for="{{videoList}}" wx:key="*this">
-			<video src="{{videoUrl[index]}}" object-fit="fill"></video>
+			<video class="common" src="{{videoUrl[index]}}" object-fit="fill" bindplay="handlePlay" id="{{item.data.vid}}" poster="{{item.data.coverUrl}}" wx:if="{{videoId === item.data.vid}}" autoplay="true" bindtimeupdate="handleTimeUpdate" bindended="handleEnded"></video>
 			
+			<!-- 性能优化，使用image代替video标签 -->
+			<image wx:else bindtap="handlePlay" id="{{item.data.vid}}" class="common" src="{{item.data.coverUrl}}"></image>
 			<!-- 底部标题 -->
 			<view class="content">{{item.data.title}}</view>
 			<!-- 底部 -->
