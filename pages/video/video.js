@@ -11,7 +11,9 @@ Page({
 			videoUrl:[],
 			videoInfo:[],
 			videoId:'',
-			videoUpdateTime:[]
+			videoUpdateTime:[],
+			//下拉刷新是否触发
+			isTriggered:false
     },
 		
 		//获取导航数据
@@ -49,7 +51,9 @@ Page({
 			})
 			console.log(videoListData)
 			this.setData({
-				videoList:videoListData.data.datas
+				videoList:videoListData.data.datas,
+				//关闭下拉刷新
+				isTriggered:false
 			})
 			
 			//调用获取视频播放地址函数
@@ -144,6 +148,14 @@ Page({
 			})
 		},
 		
+		//自定义下拉刷新
+		handleRefresher() {
+			console.log('下拉刷新被触发')
+			//获取视频列表数据
+			this.getVideoList(this.data.navId)
+			
+		},
+		
     /**
      * 生命周期函数--监听页面加载
      */
@@ -202,7 +214,19 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
-
+    onShareAppMessage: function ({from}) {
+			if(from === 'button') {
+				return {
+					title:'twotwowen-来自button的转发',
+					page:'/pages/video/video',
+					imageUrl: '/static/image/two.jpg'
+				}
+			}else {
+				return {
+					title:'twotwowen-来menu的转发',
+					page:'/pages/video/video',
+					imageUrl: '/static/image/two.jpg'
+				}
+			}
     }
 })

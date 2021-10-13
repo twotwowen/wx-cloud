@@ -17,7 +17,7 @@
 	</scroll-view>
 	
 	<!-- 视频区 -->
-	<scroll-view scroll-y class="videoScroll">
+	<scroll-view scroll-y class="videoScroll" refresher-enabled bindrefresherrefresh="handleRefresher" refresher-triggered="{{isTriggered}}">
 		<view class="videoItem" wx:for="{{videoList}}" wx:key="*this">
 			<video class="common" src="{{videoUrl[index]}}" object-fit="fill" bindplay="handlePlay" id="{{item.data.vid}}" poster="{{item.data.coverUrl}}" wx:if="{{videoId === item.data.vid}}" autoplay="true" bindtimeupdate="handleTimeUpdate" bindended="handleEnded"></video>
 			
