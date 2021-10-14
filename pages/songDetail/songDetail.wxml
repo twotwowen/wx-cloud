@@ -1,0 +1,28 @@
+<!--pages/songDetail/songDetail.wxml-->
+<view class="songDetailContainer">
+<!-- 	<audio id="myAudio" src="{{songUrl}}" bindplay="audioPlay" bindpause="audioPause" controls></audio> -->
+	<!-- 歌曲标题 -->
+	<view class="musicName">{{songName}}</view>
+	
+	<!-- 底座 -->
+	<view class="circle"></view>
+	<!-- 摇杆 -->
+	<image class="needle {{isPlay && 'needleRotate'}}" src="../../static/image/song/needle.png"></image>
+	
+	<!-- 磁盘 -->
+	<view class="discContainer {{isPlay && 'discAnimation'}}">
+		<image class="disc" src="../../static/image/song/disc.png"></image>
+		<!-- 歌曲封面图 -->
+		<image class="musicImg" src="{{songDetail[0].al.picUrl}}"></image>
+	</view>
+	
+	<!-- 歌曲播放控制 -->
+	<view class="musicControl">
+		<text class="iconfont icon-bofang-suijibofang"></text>
+		<text class="iconfont icon-shangyishou_huaban"></text>
+		<text class="iconfont icon-bofang1 big" wx:if="{{!isPlay}}" bindtap="startOrPause"></text>
+		<text class="iconfont icon-bofang big" wx:else bindtap="startOrPause"></text>
+		<text class="iconfont icon-xiayishou_huaban"></text>
+		<text class="iconfont icon-1804-liufupinggongnengtubiao-24"></text>
+	</view>
+</view>

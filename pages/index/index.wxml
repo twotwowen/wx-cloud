@@ -9,7 +9,7 @@
 
     <!-- 字体图标导航 -->
 		<view class="navContainer">
-			<view class="navItem" wx:for="{{navIcon}}" wx:key="index">
+			<view class="navItem" wx:for="{{navIcon}}" wx:key="*this" bindtap="handleToRecommendSong" id="{{item.index}}">
 				<text class="{{item.icon}}"></text>
 				<text>{{item.text}}</text>
 			</view>

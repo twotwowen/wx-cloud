@@ -76,6 +76,17 @@ Page({
 				ranklist:res.data.list.slice(0,4) //截取数组0~6
 			})
 			
+		},
+		
+		//跳转到推荐歌曲页面
+		handleToRecommendSong(event) {
+			console.log(event)
+			if(event.currentTarget.id*1 !== 0) {
+				return;
+			}
+			wx.navigateTo({
+				url: '/pages/recommendSong/recommendSong'
+			})
 		}
 		
 

@@ -49,7 +49,7 @@ Page({
 			let videoListData = await wx.$myRequest({
 				url:`/video/group?id=${navId}`
 			})
-			console.log(videoListData)
+			// console.log(videoListData)
 			this.setData({
 				videoList:videoListData.data.datas,
 				//关闭下拉刷新
