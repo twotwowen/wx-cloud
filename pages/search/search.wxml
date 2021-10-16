@@ -1,0 +1,38 @@
+<!--pages/search/search.wxml-->
+<view class="searchContainer">
+	<!-- 搜索区域 -->
+	<view class="header">
+		<view class="searchInput">
+			<text class="iconfont icon-sousuo searchIcon"></text>
+			<input type="text" model:value="{{searchContent}}" placeholder="{{placeholderContent}}" class="placeholder" bindinput="handleInputChange" />
+			<text class="iconfont icon-qingkong clear" hidden="{{!searchContent}}" bindtap="handleClear"></text>
+		</view>
+	</view>
+	
+	<block wx:if="{{searchSuggest.length && searchContent}}">
+		<!-- 搜索建议内容展示 -->
+		<view class="showSearchContent">
+			<view class="searchList">
+				<view class="searchItem" wx:for="{{searchSuggest}}" wx:key="*this">
+					<text class="iconfont icon-sousuo"></text>
+					<text class="content">{{item.keyword}}</text>
+				</view>
+			</view>
+		</view>
+	</block>
+	
+	<block wx:else>
+		<!-- 热搜榜 -->
+		<view class="hotContainer">
+			<view class="title">热搜榜</view>
+			<!-- 列表 -->
+			<view class="hotList">
+				<view class="hotItem" wx:for="{{hotList}}" wx:key="*this">
+					<text class="order">{{index + 1}}</text>
+					<text class="searchWord">{{item.searchWord}}</text>
+					<image class="iconImg" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}"></image>
+				</view>
+			</view>
+		</view>
+	</block>
+</view>

@@ -1,0 +1,102 @@
+/* pages/search/search.wxss */
+.searchContainer {
+	padding: 0 20rpx;
+}
+
+/* 头部 */
+.header {
+	display: flex;
+	height: 60rpx;
+	line-height: 60rpx;
+	padding: 10rpx 0;
+}
+.searchInput {
+	position: relative;
+	flex: 1;
+	background: rgb(237,237,237);
+	border-radius: 30rpx;
+}
+.searchIcon {
+	position: absolute;
+	left: 15rpx;
+	font-size: 52rpx;
+}
+.clear {
+	position: absolute;
+	width: 60rpx;
+	height: 60rpx;
+	line-height: 60rpx;
+	text-align: center;
+	right: 10rpx;
+	top: 0;
+	font-size: 30rpx;
+	z-index: 10;
+}
+.searchInput input {
+	margin-left: 78rpx;
+	height: 60rpx;
+}
+.placeholder {
+	font-size: 28rpx;
+}
+
+/* 热搜榜 */
+.hotContainer .title {
+	font-size: 30rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	border-bottom: 1rpx solid #eee;
+	font-weight: 600;
+}
+.hotList {
+	display: flex;
+	flex-wrap: wrap;
+}
+.hotItem {
+	display: flex;
+	width: 50%;
+	height: 80rpx;
+	line-height: 80rpx;
+	font-size: 28rpx;
+}
+.hotItem .order {
+	margin: 0 10rpx;
+}
+.hotItem .searchWord {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	max-width: 235rpx;
+	white-space: nowrap;
+}
+.hotItem .iconImg {
+	width: 35rpx;
+	height: 20rpx;
+	margin-left: 20rpx;
+	margin-top: 30rpx;
+}
+
+/* 搜索结果区域 */
+.showSearchContent {
+	border: 2rpx solid #ccaeae;
+	margin-top: 20rpx;
+	border-radius: 40rpx;
+}
+.searchContent {
+	color: rgb(147, 166, 229);
+	height: 80rpx;
+	line-height: 80rpx;
+	font-size: 24rpx;
+	border-bottom: 1rpx solid #d43c33;
+}
+.searchItem {
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+	padding: 0 20rpx;
+}
+.searchItem .content {
+  flex: 1;
+  margin-left: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}

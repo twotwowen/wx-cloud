@@ -3,7 +3,7 @@
 	<!-- 头部区域 -->
 	<view class="header">
 		<image src="../../static/image/logo.png"></image>
-		<view class="search">twotwowen</view>
+		<view class="search" bindtap="toSearch">twotwowen</view>
 	</view>
 	
 	<!-- 滑动导航区域 -->
