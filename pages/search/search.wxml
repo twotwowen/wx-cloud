@@ -3,8 +3,8 @@
 	<!-- 搜索区域 -->
 	<view class="header">
 		<view class="searchInput">
-			<text class="iconfont icon-sousuo searchIcon"></text>
-			<input type="text" model:value="{{searchContent}}" placeholder="{{placeholderContent}}" class="placeholder" bindinput="handleInputChange" />
+			<text class="iconfont icon-sousuo searchIcon" bindtap="search"></text>
+			<input type="text" model:value="{{searchContent}}" placeholder="{{placeholderContent}}" class="placeholder" bindinput="handleInputChange" bindconfirm="search" />
 			<text class="iconfont icon-qingkong clear" hidden="{{!searchContent}}" bindtap="handleClear"></text>
 		</view>
 	</view>
@@ -13,7 +13,7 @@
 		<!-- 搜索建议内容展示 -->
 		<view class="showSearchContent">
 			<view class="searchList">
-				<view class="searchItem" wx:for="{{searchSuggest}}" wx:key="*this">
+				<view class="searchItem" wx:for="{{searchSuggest}}" wx:key="*this" data-keyword="{{item.keyword}}" bindtap="searchSong">
 					<text class="iconfont icon-sousuo"></text>
 					<text class="content">{{item.keyword}}</text>
 				</view>
@@ -22,6 +22,14 @@
 	</block>
 	
 	<block wx:else>
+		<!-- 历史搜索记录 -->
+		<view class="history" wx:if="{{historyList.length}}">
+			<view class="title">历史搜索</view>
+			<view class="historyItem" wx:for="{{historyList}}" wx:key="item" data-keyword="{{item}}" bindtap="searchSong">{{item}}</view>
+			<!-- 删除 -->
+			<view class="iconfont icon-lajitong delete" bindtap="handleDelete"></view>
+		</view>
+		
 		<!-- 热搜榜 -->
 		<view class="hotContainer">
 			<view class="title">热搜榜</view>
@@ -29,7 +37,7 @@
 			<view class="hotList">
 				<view class="hotItem" wx:for="{{hotList}}" wx:key="*this">
 					<text class="order">{{index + 1}}</text>
-					<text class="searchWord">{{item.searchWord}}</text>
+					<text class="searchWord" bindtap="searchSong" data-keyword="{{item.searchWord}}">{{item.searchWord}}</text>
 					<image class="iconImg" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}"></image>
 				</view>
 			</view>

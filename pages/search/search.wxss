@@ -94,9 +94,44 @@
   line-height: 80rpx;
   display: flex;
 	padding: 0 20rpx;
+	
 }
 .searchItem .content {
   flex: 1;
   margin-left: 20rpx;
   border-bottom: 1rpx solid #eee;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	max-width: 600rpx;
+	white-space: nowrap;
+}
+
+/* 历史记录 */
+.history {
+	position: relative;
+	display: flex;
+	flex-flow: wrap;
+	margin: 20rpx 0;
+}
+.history .title {
+	font-size: 28rpx;
+	height: 50rpx;
+	line-height: 50rpx;
+}
+.history .historyItem {
+	font-size: 26rpx;
+	height: 50rpx;
+	line-height: 50rpx;
+	background: #ededed;
+	margin-left: 20rpx;
+	padding: 0 30rpx;
+	border-radius: 20rpx;
+	margin-bottom: 20rpx;
+}
+.history .delete {
+	position: absolute;
+	bottom: 30rpx;
+	right: 15rpx;
+	font-size: 36rpx;
 }

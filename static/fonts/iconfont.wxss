@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2842486 */
-  src: url('//at.alicdn.com/t/font_2842486_5q3e5dz1449.woff2?t=1634365221845') format('woff2'),
-       url('//at.alicdn.com/t/font_2842486_5q3e5dz1449.woff?t=1634365221845') format('woff'),
-       url('//at.alicdn.com/t/font_2842486_5q3e5dz1449.ttf?t=1634365221845') format('truetype');
+  src: url('//at.alicdn.com/t/font_2842486_4peuzemucex.woff2?t=1634440673319') format('woff2'),
+       url('//at.alicdn.com/t/font_2842486_4peuzemucex.woff?t=1634440673319') format('woff'),
+       url('//at.alicdn.com/t/font_2842486_4peuzemucex.ttf?t=1634440673319') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dianzan:before {
+  content: "\e661";
+}
+
+.icon-huidaodingbu:before {
+  content: "\e88d";
+}
+
+.icon-xiezi:before {
+  content: "\e60e";
+}
+
+.icon-zhuanfa:before {
+  content: "\e641";
+}
+
+.icon-lajitong:before {
+  content: "\e63a";
 }
 
 .icon-qingkong:before {
