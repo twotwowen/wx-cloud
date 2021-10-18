@@ -1,2 +1,28 @@
 <!--pages/searchSongList/searchSongList.wxml-->
-<text>pages/searchSongList/searchSongList.wxml</text>
+<view class="searchSongListContainer">
+	<view class="searchSongList">
+		<view class="header">
+			搜索发现
+			<view class="play"><text>播放</text></view>
+		</view>
+		<view class="songList">
+			<view class="songListItem" wx:for="{{searchSongList}}" wx:key="id" data-index="{{index}}" bindtap="handleToSongDetail" id="{{item.id}}">
+				<view class="title">{{item.name}}</view>
+				<view class="songInfo">
+					<view class="ar">
+						<text class="isSQ" wx:if="{{item.pop === 100}}">SQ</text>
+						<text class="name">{{item.ar[0].name}}--</text>
+						<text class="alName">{{item.al.name}}</text>
+					</view>
+					<view class="alia" wx:if="{{item.alia.length}}">{{item.alia[0]}}</view>
+					<text class="isDownloadMaxbr" wx:if="{{item.privilege.flag !== 128}}">下载量999+</text>
+				</view>
+				<view class="icon">
+					<text class="iconfont icon-dianzan"></text>
+					<text class="iconfont icon-xuanxiang"></text>
+				</view>
+			</view>
+			
+		</view>
+	</view>
+</view>

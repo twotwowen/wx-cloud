@@ -1,4 +1,5 @@
 // pages/search/search.js
+import pubsub from 'pubsub-js'
 Page({
 
     /**
@@ -38,31 +39,14 @@ Page({
 			wx.setStorageSync('searchHistory',historyList)
 			//获取搜索歌曲推荐
 			this.getSearchSongList(searchContent)
-			let searchSongList = this.data.searchSongList
 			//跳转至搜索关键词列表
 		
 			wx.navigateTo({
-				url:'/pages/searchSongList/searchSongList',
-				success:function(res) {
-					// console.log(searchSongList)
-					// 通过eventChannel向被打开页面传送数据
-					res.eventChannel.emit('searchSongList',{data:searchSongList})
-				}
+				url:'/pages/searchSongList/searchSongList'
 			})
-			// this.toSearchSongList()
+
 		},
-		//跳转至搜索关键词列表
-		// toSearchSongList() {
-		// 	let searchSongList = this.data.searchSongList
-		// 	wx.navigateTo({
-		// 		url:'/pages/searchSongList/searchSongList',
-		// 		success:function(res) {
-		// 			// console.log(searchSongList)
-		// 			// 通过eventChannel向被打开页面传送数据
-		// 			res.eventChannel.emit('searchSongList',{data:searchSongList})
-		// 		}
-		// 	})
-		// },
+		
 		//获取搜索结果
 		async getSearchSongList(searchContent) {
 			let searchSongList = await wx.$myRequest({
@@ -72,6 +56,8 @@ Page({
 			this.setData({
 				searchSongList:searchSongList.data.result.songs
 			})
+			//发布
+			pubsub.publish('searchSongList',searchSongList.data.result.songs)
 		},
 		
 		//获取默认搜索关键词
@@ -172,6 +158,31 @@ Page({
 		searchSong(e) {
 			let keyword = e.currentTarget.dataset.keyword
 			this.getSearchSongList(keyword)
+			
+			let {historyList,searchContent} = this.data
+			//将搜索关键字添加到本地记录
+			// if(searchContent.trim() === '') {
+			// 	return
+			// }
+			if(historyList.indexOf(keyword) !== -1) {
+				historyList.splice(historyList.indexOf(keyword),1)
+				
+			}
+			// unshift () 方法将把它的参数插入 arrayObject 的头部
+			historyList.unshift(keyword)
+			
+			//刷新记录
+			this.setData({
+				historyList
+			})
+			
+			//存储到本地
+			wx.setStorageSync('searchHistory',historyList)
+			//跳转至搜索关键词列表
+					
+			wx.navigateTo({
+				url:'/pages/searchSongList/searchSongList'
+			})
 		},
     /**
      * 生命周期函数--监听页面加载

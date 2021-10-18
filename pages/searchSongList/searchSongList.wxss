@@ -1,1 +1,113 @@
 /* pages/searchSongList/searchSongList.wxss */
+page {
+	background: #eee;
+	height: 100%;
+}
+.searchSongListContainer {
+	background-color: #eeeeee;
+	margin: 30rpx 0;
+}
+.searchSongList {
+	background-color: #fff;
+	margin: 0 30rpx;
+	padding: 40rpx;
+	border-radius: 20rpx;
+}
+.header {
+	position: relative;
+	font-size: 37rpx;
+	border-bottom: 1rpx solid #eee;
+	padding-bottom: 20rpx;
+}
+.header .play {
+	position: absolute;
+	top: -4rpx;
+	right: 20rpx;
+	width: 83rpx;
+	height: 52rpx;
+	border-radius: 32rpx;
+	font-size: 26rpx;
+	border: 2rpx solid #333;
+	line-height: 52rpx;
+	/* text-align: center; */
+	padding-left: 30rpx;
+}
+.header .play text {
+	margin-left: 14rpx;
+}
+.header .play:before {
+	position: absolute;
+	top: 16rpx;
+	left: 25rpx;
+	content: '';
+	width: 0;
+	height: 0;
+	border: 10rpx solid;
+	border-color: transparent transparent transparent black;
+}
+.songList .songListItem {
+	padding: 10rpx 0;
+	position: relative;
+	border-bottom: 1rpx solid #eee;
+}
+.songListItem .title {
+	font-size: 33rpx;
+	color: cornflowerblue;
+	/* margin-bottom: 10rpx; */
+	max-width: 550rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.songInfo .ar .isSQ {
+	display: inline-block;
+	border: 1rpx solid #ff9410;
+	width: 47rpx;
+	height: 25rpx;
+	font-size: 20rpx;
+	line-height: 25rpx;
+	text-align: center;
+	color: red;
+	border-radius: 9rpx;
+}
+.songInfo .ar {
+	max-width: 510rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: gray;
+}
+.songInfo .ar .name {
+	font-size: 24rpx;
+	color: gray;
+	margin-left: 10rpx;
+}
+.songInfo .ar .alName {
+	font-size: 24rpx;
+	color: gray;
+}
+.songInfo .alia {
+	font-size: 24rpx;
+	color: gray;
+	max-width: 550rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.songListItem .isDownloadMaxbr {
+	background-color: #fbffdf;
+	color: #e6d91c;
+	font-size: 21rpx;
+}
+.songListItem .icon {
+	right: -25rpx;
+	position: absolute;
+	top: 53rpx;
+}
+.songListItem .icon text {
+	font-size: 50rpx;
+	color: gray;
+}
+.icon .icon-dianzan {
+	margin-right: 10rpx;
+}

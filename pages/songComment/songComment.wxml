@@ -1,0 +1,108 @@
+<!--pages/songComment/songComment.wxml-->
+<!-- 滚动穿透 -->
+<page-meta page-style="overflow: {{isMore ? 'hidden' : 'visible'}}" />
+<view class="songCommentContainer">
+	<view class="songTitle" style="{{isMore ? 'opacity: .3;': ''}}">
+		<view class="songPic">
+			<image src="../../static/image/song/disc.png" class="circle"></image>
+			<image src="{{songInfo.data.picUrl}}" class="musicImg"></image>
+		</view>
+		<view class="songName">
+			{{songInfo.data.name}}
+			<text class="ar">- {{songInfo.data.ar}}</text>
+		</view>
+	</view>
+	<view class="comment" style="{{isMore ? 'opacity: .3;': ''}}">
+		<view class="commentHeader">
+			评论区
+			<view class="option">
+				<text class="{{flag ? 'active' : ''}}" bindtap="hotOrNew">最热</text>
+				<text class="{{flag ? '' : 'active'}}" bindtap="hotOrNew">最新</text>
+			</view>
+		</view>
+		<view class="commentItem" wx:for="{{flag ? hotCommentsList : commentsList}}" wx:key="commentId">
+			<view class="top">
+				<view class="left">
+					<image src="{{item.user.avatarUrl}}"></image>
+					<view class="arInfo">
+						<text class="name">{{item.user.nickname}}</text>
+						<text class="time">{{flag ? hotFormatTime[index] : newFormatTime[index]}}</text>
+					</view>
+				</view>
+				
+				<view class="liked">
+					<text class="count">{{item.likedCount}}</text>
+					<text class="iconfont icon-dianzan icon"></text>
+				</view>
+			</view>
+			<view class="bottom">
+				<view class="txt">{{item.content}}</view>
+				<view class="reply" bindtap="moreComments" id="{{item.commentId}}">更多回复 ></view>
+			</view>
+		</view>
+		
+	</view>
+	<view class="makeComments" style="{{isMore ? 'opacity: .3;': ''}}">
+		<text class="iconfont icon-xiezi icon"></text>
+		<text>发表我的评论</text>
+	</view>
+	
+	<!-- 更多评论 -->
+	<view class="moreComments" wx:if="{{isMore}}">
+		<view class="header">
+			<text catchtap="hoverMoreComments" class="exit">⬅</text>
+			<text>回复(137)</text>
+		</view>
+		<view class="originalComment">
+			
+			<view class="top">
+				<view class="left">
+					<image src="{{ownerComment.user.avatarUrl}}"></image>
+					<view class="arInfo">
+						<text class="name">{{ownerComment.user.nickname}}</text>
+						<text class="time">{{ownerFormatTime}}</text>
+					</view>
+				</view>
+				
+				<view class="liked">
+					<text class="count">{{ownerComment.likedCount}}</text>
+					<text class="iconfont icon-dianzan icon"></text>
+				</view>
+			</view>
+			<view class="bottom">
+				<view class="txt">{{ownerComment.content}}</view>
+				<!-- <view class="reply" bindtap="moreComments">更多回复 ></view> -->
+			</view>
+			
+		</view>
+		
+		<scroll-view scroll-y enable-flex  catchtouchmove="{{true}}">
+			<view class="moreContent">
+				<view class="title">全部回复</view>
+				<view class="moreList">
+					<view class="commentItem" wx:for="{{floorComments}}" wx:key="commentId">
+						<view class="top">
+							<view class="left">
+								<image src="{{item.user.avatarUrl}}"></image>
+								<view class="arInfo">
+									<text class="name">{{item.user.nickname}}</text>
+									<text class="time">{{floorFormatTime[index]}}</text>
+								</view>
+							</view>
+							
+							<view class="liked">
+								<text class="count">{{item.likedCount}}</text>
+								<text class="iconfont icon-dianzan icon"></text>
+							</view>
+						</view>
+						<view class="bottom">
+							<view class="txt">{{item.content}}</view>
+							<!-- <view class="reply" bindtap="moreComments">更多回复 ></view> -->
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+
+	</view>
+</view>

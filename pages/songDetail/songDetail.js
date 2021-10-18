@@ -18,6 +18,22 @@ Page({
 			durationTime:'00:00',
 			currentWidth:0
     },
+		//去往评论页
+		toSongComment() {
+			let {songId} = this.data
+			let songInfo = {
+				picUrl:this.data.songDetail[0].al.picUrl,
+				name:this.data.songDetail[0].name,
+				ar:this.data.songDetail[0].ar[0].name
+			}
+			wx.navigateTo({
+				url:`/pages/songComment/songComment?id=${songId}`,
+				success:function(res) {
+					//通过eventchannel向被打开页面传输数据
+					res.eventChannel.emit('songInfo',{data:songInfo})
+				}
+			})
+		},
 		
 		//播放or暂停
 		startOrPause() {
@@ -105,6 +121,7 @@ Page({
 			})
 			//发布
 			pubsub.publish('switchMusic',type)
+			
 		},
 		
     /**
@@ -178,6 +195,14 @@ Page({
 					currentWidth
 				})
 			})
+			//发布
+			// let songInfo = {
+			// 	picUrl:this.data.songDetail[0].al.picUrl,
+			// 	name:this.data.songDetail[0].name,
+			// 	ar:this.data.songDetail[0].ar[0].alias.name
+			// }
+			// pubsub.publish('songInfo',songInfo)
+		
     },
 
     /**
