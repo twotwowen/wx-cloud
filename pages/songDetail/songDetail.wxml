@@ -14,10 +14,10 @@
 		<image class="disc" src="../../static/image/song/disc.png"></image>
 		<!-- 歌曲封面图 -->
 		<image class="musicImg" src="{{songDetail[0].al.picUrl}}"></image>
-			<!-- 评论 -->
-	<text class="comment iconfont icon-pinglun" bindtap="toSongComment"></text>
+		
 	</view>
-
+	<!-- 评论 -->
+	<text class="comment iconfont icon-pinglun" bindtap="toSongComment"></text>
 	<!-- 进度条控制 -->
 	<view class="progressControl">
 		<text>{{currentTime}}</text>

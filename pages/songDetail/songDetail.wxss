@@ -87,11 +87,11 @@
   border-radius: 50%;
 }
 /* 评论 */
-.discContainer .comment {
+.comment {
 	position: absolute;
 	font-size: 60rpx;
-	right: 27rpx;
-	bottom: -13rpx;
+	right: 105rpx;
+	bottom: 300rpx;
 }
 /* 进度条 */
 .progressControl {

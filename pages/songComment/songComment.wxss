@@ -224,11 +224,15 @@ page {
 
 .moreComments .moreContent {
 	padding: 20rpx 30rpx;
-	height: 50vh;
+	
 }
 .moreComments .moreContent .title {
 	font-size: 26rpx;
 	margin-bottom: 20rpx;
 }
 
+/* 滚动区域 */
+.moreComments .scroll {
+	height: 70vh;
+}
 /* 全部回复 */
